@@ -1,0 +1,23 @@
+<div class="body-container">
+  <div class="ticket-container">
+
+    @if(from != undefined || to != undefined) {
+      <div style="display: flex; flex-direction: row; width: 100%">
+        @if (from != undefined) {
+          <div class="ticket-instruction" style="text-align: left">De :<br><strong>{{ from }}</strong></div>
+        }
+        @if (to != undefined) {
+          <div class="ticket-instruction" style="text-align: right">À :<br><strong>{{ to }}</strong></div>
+        }
+      </div>
+    }
+
+    <div class="ticket-instruction">présenter cette page te donne droit à :</div>
+    <div class="ticket-big-instruction">(1) câlin gratuit</div>
+
+    <div style="display: flex; flex-direction: row; width: 100%">
+      <div class="ticket-instruction" style="text-align: left">usage :<br><strong>infini</strong></div>
+      <div class="ticket-instruction" style="text-align: right">Expire le :<br><strong>jamais</strong></div>
+    </div>
+  </div>
+</div>
