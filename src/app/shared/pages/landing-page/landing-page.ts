@@ -1,27 +1,49 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FooterComponent} from '../../components/footer-component/footer-component';
+import {EditComponent} from '../../components/edit-component/edit-component';
 
 @Component({
   selector: 'app-landing-page',
   imports: [
-    FooterComponent
+    FooterComponent,
+    EditComponent
   ],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.css',
 })
 export class LandingPage implements OnInit {
 
+  router: Router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
 
   from: string = '';
   to: string = '';
 
-  ngOnInit() {
-    this.from = this.route.snapshot.queryParams['from'];
-    this.to = this.route.snapshot.queryParams['to'];
+  editComponentIsVisible: Boolean = false;
 
-    console.log('From:', this.from);
-    console.log('To:', this.to);
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.from = params['from'] || '';
+      this.to = params['to'] || '';
+    });
+  }
+
+  onEditValidate(data: {from: string, to: string}) {
+    this.router.navigate(['/'], {
+      queryParams: {
+        from: data.from,
+        to: data.to
+      }
+    });
+    this.hideEditComponent();
+  }
+
+  showEditComponent() {
+    this.editComponentIsVisible = true;
+  }
+
+  hideEditComponent() {
+    this.editComponentIsVisible = false;
   }
 }

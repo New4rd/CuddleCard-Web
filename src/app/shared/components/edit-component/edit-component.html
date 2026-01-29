@@ -1,0 +1,16 @@
+<div class="edit">
+  <div class="ticket-big-instruction" style="text-align: center">modifie la carte !<br>(si tu veux)</div>
+
+  <div style="width: 100%; gap: 30px; display: flex; flex-direction: column;">
+    <app-input-field-component label="de :" placeholder="C'est de qui ?" [value]="from" (valueChange)="from = $event"></app-input-field-component>
+    <app-input-field-component label="à :" placeholder="C'est pour qui ?" [value]="to" (valueChange)="to = $event"></app-input-field-component>
+  </div>
+
+  <div style="width: 100%; gap: 15px; display: flex; flex-direction: row;">
+    <button class="secondary-button" style="width: 51px; height: 51px; display: flex; align-items: center; justify-content: center;" (click)="onCancelClick()">
+      <img src="cancel.svg" style="height: 16px; width: 16px;" />
+    </button>
+    <button class="primary-button" (click)="onSaveClick(from, to)">Valider :)</button>
+  </div>
+
+</div>

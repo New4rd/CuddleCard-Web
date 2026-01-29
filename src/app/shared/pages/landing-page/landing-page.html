@@ -1,12 +1,11 @@
 <div class="body-container">
-  <div class="ticket-container">
-
-    @if(from != undefined || to != undefined) {
+  <div class="ticket-container" (click)="showEditComponent()">
+    @if(from != '' || to != '') {
       <div style="display: flex; flex-direction: row; width: 100%">
-        @if (from != undefined) {
+        @if (from != '') {
           <div class="ticket-instruction" style="text-align: left">De :<br><strong>{{ from }}</strong></div>
         }
-        @if (to != undefined) {
+        @if (to != '') {
           <div class="ticket-instruction" style="text-align: right">À :<br><strong>{{ to }}</strong></div>
         }
       </div>
@@ -22,4 +21,7 @@
   </div>
 </div>
 
+@if (editComponentIsVisible) {
+  <app-edit-component (saveRequested)="onEditValidate($event)" (cancelRequested)="hideEditComponent()"></app-edit-component>
+}
 <app-footer-component></app-footer-component>
