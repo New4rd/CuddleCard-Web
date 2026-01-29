@@ -1,9 +1,12 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {FooterComponent} from '../../components/footer-component/footer-component';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [],
+  imports: [
+    FooterComponent
+  ],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.css',
 })
